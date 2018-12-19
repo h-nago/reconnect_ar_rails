@@ -9,7 +9,7 @@ module ReconnectArRails
       @app.call(env)
     rescue => e
       if e.message.match(/--read-only/)
-        ActiveRecord::Base.connection.disconnect!
+        ActiveRecord::Base.clear_all_connections!
       end
       raise e
     end
